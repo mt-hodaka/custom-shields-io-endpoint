@@ -1,0 +1,27 @@
+{
+  "name": "custom-shields-io-endpoint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mt-hodaka/custom-shields-io-endpoint.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mt-hodaka/custom-shields-io-endpoint/issues"
+  },
+  "homepage": "https://github.com/mt-hodaka/custom-shields-io-endpoint#readme",
+  "devDependencies": {
+    "@google/clasp": "^2.3.0",
+    "tslint": "^6.1.0"
+  },
+  "dependencies": {
+    "@types/google-apps-script": "^1.0.11"
+  }
+}
