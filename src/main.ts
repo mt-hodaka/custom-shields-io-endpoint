@@ -1,6 +1,7 @@
-import { LookupRequest } from './apiClient/itunes.apple.com/lookup';
+import { Lookup } from './apiClient/itunes.apple.com/lookup';
 
 function main(): void {
-    let response = LookupRequest.send("1496112584", "jp");
+    const request = new Lookup.Request({ id: "1347707000", country: "jp" });
+    const response = request.send();
     Logger.log(response);
 }
