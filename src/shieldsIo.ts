@@ -1,9 +1,8 @@
 export namespace ShieldsIo {
     export interface Response {
-        schemaVersion: number;
+        schemaVersion: 1;
         label:         string;
         message:       string;
-        color:         string;
     }
 
     export class Convert {

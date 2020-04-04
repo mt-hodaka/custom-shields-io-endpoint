@@ -76,9 +76,24 @@ export namespace Lookup {
         userRatingCount:                    number;
     }
 
+    export interface Result {
+        localizedReleaseDate: string;
+        localizedCurrentVersionReleaseDate: string;
+        fileSizeMegaBytes: string;
+    }
+
     export class Convert {
         static toResponse(json: string): Response {
-            return JSON.parse(json);
+            const response: Response = JSON.parse(json);
+            response.results = response.results.map(result => {
+                result.releaseDate = new Date(result.releaseDate);
+                result.currentVersionReleaseDate = new Date(result.currentVersionReleaseDate);
+                result.localizedReleaseDate = result.releaseDate.toLocaleDateString();
+                result.localizedCurrentVersionReleaseDate = result.currentVersionReleaseDate.toLocaleDateString();
+                result.fileSizeMegaBytes = `${Math.round(Number(result.fileSizeBytes) / 1_000_000)}MB`;
+                return result;
+            });
+            return response;
         }
 
         static toJson(response: Response): string {
