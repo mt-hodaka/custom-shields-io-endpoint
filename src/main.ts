@@ -6,7 +6,7 @@ function doGet(e: Event): GoogleAppsScript.Content.TextOutput {
     let response: ShieldsIo.Response
 
     switch (e.parameter.kind) {
-        case 'ItunesAppleComUsecase.lookup':
+        case 'ItunesAppleCom.lookup':
             response = ItunesAppleComUsecase.lookup(e.parameter);
     }
 

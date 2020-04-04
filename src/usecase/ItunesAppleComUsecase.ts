@@ -16,7 +16,7 @@ export namespace ItunesAppleComUsecase {
     }
 
     export interface LookupParameter extends Usecase.Parameterizable {
-        kind: 'ItunesAppleComUsecase.lookup';
+        kind: 'ItunesAppleCom.lookup';
         id: string;
         country?: string;
     }
