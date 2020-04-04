@@ -1,6 +1,6 @@
 import { Usecase } from './usecase/interface/Usecase';
 import { ItunesAppleComUsecase } from './usecase/ItunesAppleComUsecase';
-import { ShieldsIo } from './shieldsIo';
+import { ShieldsIo } from './ShieldsIo';
 
 function doGet(e: Event): GoogleAppsScript.Content.TextOutput {
     let response: ShieldsIo.Response

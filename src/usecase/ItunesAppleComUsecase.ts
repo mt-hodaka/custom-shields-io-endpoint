@@ -1,5 +1,5 @@
-import { Lookup } from '../apiClient/itunes.apple.com/lookup';
-import { ShieldsIo } from '../shieldsIo';
+import { Lookup } from '../apiClient/itunes.apple.com/Lookup';
+import { ShieldsIo } from '../ShieldsIo';
 import { Usecase } from './interface/Usecase';
 
 export namespace ItunesAppleComUsecase {
