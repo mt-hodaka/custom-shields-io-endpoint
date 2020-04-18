@@ -1,25 +1,12 @@
 export namespace Lookup {
     export class Request {
-        id: string;
-        country?: string;
+        static endpoint = 'https://itunes.apple.com/lookup' as const;
 
-        constructor({ id, country }: { id: string; country?: string; }) {
-            this.id = id;
-            this.country = country;
+        constructor(private _url: string) {
         }
 
         send(): Response {
-            const baseUrl = "https://itunes.apple.com";
-            const path = "/lookup";
-            const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
-                method: "get",
-                payload: {
-                    "id": this.id,
-                    "country": this.country ?? ""
-                }
-            };
-
-            const response = UrlFetchApp.fetch(baseUrl + path, options);
+            const response = UrlFetchApp.fetch(this._url);
             return Convert.toResponse(response.getContentText());
         }
     }
@@ -80,6 +67,7 @@ export namespace Lookup {
         localizedReleaseDate: string;
         localizedCurrentVersionReleaseDate: string;
         fileSizeMegaBytes: string;
+        roundedAverageUserRating: string;
     }
 
     export class Convert {
@@ -90,7 +78,8 @@ export namespace Lookup {
                 result.currentVersionReleaseDate = new Date(result.currentVersionReleaseDate);
                 result.localizedReleaseDate = result.releaseDate.toLocaleDateString();
                 result.localizedCurrentVersionReleaseDate = result.currentVersionReleaseDate.toLocaleDateString();
-                result.fileSizeMegaBytes = `${Math.round(Number(result.fileSizeBytes) / 1_000_000)}MB`;
+                result.fileSizeMegaBytes = (Number(result.fileSizeBytes) / 1_000_000).toFixed(1);
+                result.roundedAverageUserRating = result.averageUserRating.toFixed(1);
                 return result;
             });
             return response;
